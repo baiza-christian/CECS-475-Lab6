@@ -8,12 +8,13 @@ namespace BusinessLayer
     public class BusinessLayer : IBusinessLayer
     {
         private readonly IStandardRepository _standardRepository;
-       
+        //Coult be IStudnetRepository??
+        private readonly IStudentRepository _studentRepository;
 
         public BusinessLayer()
         {
             _standardRepository = new StandardRepository();
-            
+            _studentRepository = new StudentRepository();
         }
 
         #region Standard
@@ -51,7 +52,33 @@ namespace BusinessLayer
         #endregion
 
         #region Student
-        
+        // IMPLEMENT THESE 
+
+        public IList<Student> GetAllStudents() 
+        {
+            return _studentRepository.GetList();
+        }
+        public Student GetStudentByID(int id)
+        {
+            return _studentRepository.GetById(id);
+        }
+        public Student GetStudentByName(string name) 
+        {
+            //Implement this
+            return _studentRepository.GetByName(name);
+        }
+        public void AddStudent(Student student)
+        {
+            _studentRepository.Insert(student);
+        }
+        public void UpdateStudent(Student student)
+        {
+            _studentRepository.Update(student);
+        }
+        public void RemoveStudent(Student student)
+        {
+            _studentRepository.Delete(student);
+        }
         
         #endregion
     }

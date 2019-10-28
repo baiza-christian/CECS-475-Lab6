@@ -17,9 +17,13 @@ namespace DataAccessLayer
 
         T GetById(int id);
 
+        T GetByName(string name);
+
         IQueryable<T> SearchFor(Expression<Func<T, bool>> predicate);
 
         IEnumerable<T> GetAll();
+
+        IList<T> GetList(params Expression<Func<T, object>>[] navigationProperties);
 
         T GetSingle(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties);
     }

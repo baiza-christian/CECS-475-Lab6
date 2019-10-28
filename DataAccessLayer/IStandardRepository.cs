@@ -10,10 +10,4 @@ namespace DataAccessLayer
     {
 
     }
-
-    public class StandardRepository : Repository<Standard>, IStandardRepository
-    {
-        public StandardRepository() : base(new SchoolDBEntities()) { }
-    }
-
 }

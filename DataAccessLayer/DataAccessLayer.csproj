@@ -66,9 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StudentRepository.cs" />
     <Compile Include="Course.cs">
       <DependentUpon>SchoolDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="IStudentRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IStandardRepository.cs" />
     <Compile Include="Program.cs" />

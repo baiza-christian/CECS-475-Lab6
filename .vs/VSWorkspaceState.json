@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Assignment5",
-    "\\BusinessLayer",
-    "\\Client",
-    "\\DataAccessLayer"
+    "\\BusinessLayer"
   ],
-  "SelectedNode": "\\Client",
+  "SelectedNode": "\\Assignment5.sln",
   "PreviewInSolutionExplorer": false
 }
