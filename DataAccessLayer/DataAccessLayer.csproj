@@ -66,6 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseRepository.cs" />
+    <Compile Include="ICourseRepository.cs" />
+    <Compile Include="ITeacherRepository.cs" />
     <Compile Include="StudentRepository.cs" />
     <Compile Include="Course.cs">
       <DependentUpon>SchoolDBModel.tt</DependentUpon>
@@ -105,6 +108,7 @@
     <Compile Include="Teacher.cs">
       <DependentUpon>SchoolDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TeacherRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

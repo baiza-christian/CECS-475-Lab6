@@ -27,13 +27,13 @@ namespace Assignment5
             //businessLayer.AddStudent(student0);
             //businessLayer.AddStudent(student1);
 
-            //Console.WriteLine("Enter StudentID to Remove: ");
-            //int removeMe = Console.Read();
+            Console.WriteLine("Enter StudentID to Remove: ");
+            int removeMe = Console.Read();
 
-            //Student s = businessLayer.GetStudentByID(removeMe);
-            //businessLayer.RemoveStudent(s);
-            //Console.Write(s.StudentID);
-            //Console.Write(s.StudentName);
+            Student s = businessLayer.GetStudentByID(removeMe);
+            businessLayer.RemoveStudent(s);
+            Console.Write(s.StudentID);
+            Console.Write(s.StudentName);
 
 
             IList<Student> students = businessLayer.GetAllStudents();

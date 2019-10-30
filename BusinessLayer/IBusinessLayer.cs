@@ -31,7 +31,37 @@ namespace BusinessLayer
         void UpdateStudent(Student student);
 
         void RemoveStudent(Student student);
-        
+
+        #endregion
+
+        #region Course
+        IList<Student> GetAllStudents();
+
+        Student GetStudentByID(int id);
+
+        Student GetStudentByName(string name);
+
+        void AddStudent(Student student);
+
+        void UpdateStudent(Student student);
+
+        void RemoveStudent(Student student);
+
+        #endregion
+
+        #region Teacher
+        IList<Student> GetAllStudents();
+
+        Student GetStudentByID(int id);
+
+        Student GetStudentByName(string name);
+
+        void AddStudent(Student student);
+
+        void UpdateStudent(Student student);
+
+        void RemoveStudent(Student student);
+
         #endregion
     }
 }
