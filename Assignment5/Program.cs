@@ -1,4 +1,3 @@
-﻿
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -11,23 +10,27 @@ namespace Assignment5
     {
         static BusinessLayer.BusinessLayer bl = new BusinessLayer.BusinessLayer();
 
-        public static int input inputValidation(int min, int max)
+        public static int inputValidation(int min, int max)
         {
             int lower = min;
             int upper = max;
             int userInput = 0;
-            bool 
+            bool istrue = true;
+            return userInput;
         }
 
-        public static void menuTableTeacher()
+        public static string menuTableTeacher()
         {
-            Console.WriteLine("\nTable Teacher\n1. Create Teacher\n2. Read Teacher\n3. Update Teacher\n4. Delete Teacher ");
-            int userInput;
+            Console.WriteLine("\nTable Teacher\n1. Create Teacher\n2. Read Teacher\n3. Update Teacher\n4. Delete Teacher\n5. Display Teachers\n");
+            string userInput = Console.ReadLine();
+            return userInput;
         }
 
-        public static void menuTableCourse()
+        public static string menuTableCourse()
         {
-
+            Console.WriteLine("\nTable Course\n1. Create Course\n2. Read Course\n3. Update Course\n4. Delete Course\n5. Display Courses\n");
+            string userInput = Console.ReadLine();
+            return userInput;
         }
 
         public static void Main(string[] args)
@@ -36,6 +39,7 @@ namespace Assignment5
             IBusinessLayer businessLayer = new BusinessLayer.BusinessLayer();
 
             bool cont = true;
+            string userInput;
 
             while (cont)
             {
@@ -50,11 +54,130 @@ namespace Assignment5
                 switch (menu1)
                 {
                     case "1":
-                        menuTableTeacher();
+                        userInput = menuTableTeacher();
+                        if (userInput == "1")
+                        {
+                            Teacher newTeach = new Teacher();
+                            Console.WriteLine("Enter Teacher ID: ");
+                            int id = Console.Read();
+                            Console.WriteLine("Enter Teacher Name: ");
+                            string name = Console.ReadLine();
+                            newTeach.TeacherId = id;
+                            newTeach.TeacherName = name;
+                            businessLayer.AddTeacher(newTeach);
+                        }
+                        else if (userInput == "2")
+                        {
+                            Console.WriteLine("\n1. Find Teacher By Name\n2. Find Teacher by ID\n");
+                            if (Console.ReadLine() == "1")
+                            {
+                                Console.WriteLine("Enter Name: ");
+                                string name = Console.ReadLine();
+                                Teacher newTeach = businessLayer.GetTeacherByName(name);
+                                if (newTeach != null)
+                                    Console.WriteLine(newTeach.TeacherId + " " + newTeach.TeacherName);
+                                else
+                                    break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Enter ID: ");
+                                int id = Console.Read();
+                                Teacher newTeach = businessLayer.GetTeacherByID(id);
+                                if (newTeach != null)
+                                    Console.WriteLine(newTeach.TeacherId + " " + newTeach.TeacherName);
+                                else
+                                    break;
+                            }
+                        }
+                        else if (userInput == "3")
+                        {
+                            Console.WriteLine("Enter Teacher ID to Update: ");
+                            int id = Console.Read();
+                            Teacher newTeach = businessLayer.GetTeacherByID(id);
+                            Console.WriteLine("Enter Teacher new Name: ");
+                            string name = Console.ReadLine();
+                            newTeach.TeacherName = name;
+                            businessLayer.UpdateTeacher(newTeach);
+                        }
+                        else if (userInput == "4")
+                        {
+                            Console.WriteLine("Enter Teacher ID to Delete: ");
+                            int id = Console.Read();
+                            Teacher newTeach = businessLayer.GetTeacherByID(id);
+                            businessLayer.RemoveTeacher(newTeach);
+                        }
+                        else
+                        {
+                            IList<Teacher> teachers = businessLayer.GetAllTeacher();
+                            foreach (Teacher teacher in teachers)
+                            {
+                                Console.WriteLine(string.Format("{0} - {1}", teacher.TeacherId, teacher.TeacherName));
+                            }
+
+                        }
                         break;
 
                     case "2":
-                        menuTableCourse();
+                        userInput = menuTableCourse();
+                        if (userInput == "1")
+                        {
+                            Course newCourse = new Course();
+                            Console.WriteLine("Enter New Course ID: ");
+                            int id = Console.Read();
+                            Console.WriteLine("Enter New Course Name: ");
+                            string name = Console.ReadLine();
+                            newCourse.CourseId = id;
+                            newCourse.CourseName = name;
+                            businessLayer.AddCourse(newCourse);
+                        }
+                        else if (userInput == "2")
+                        {
+                            Console.WriteLine("\n1. Find Course By Name\n2. Find Course by ID\n");
+                            if (Console.ReadLine() == "1")
+                            {
+                                Console.WriteLine("Enter Name: ");
+                                string name = Console.ReadLine();
+                                Course newCourse = businessLayer.GetCourseByName(name);
+                                if (newCourse != null)
+                                    Console.WriteLine(newCourse.CourseId + " " + newCourse.CourseName);
+                                else break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Enter ID: ");
+                                int id = Console.Read();
+                                Course newCourse = businessLayer.GetCourseByID(id);
+                                if (newCourse != null)
+                                    Console.WriteLine(newCourse.CourseId + " " + newCourse.CourseName);
+                                else break;
+                            }
+                        }
+                        else if (userInput == "3")
+                        {
+                            Console.WriteLine("Enter Course ID to Update: ");
+                            int id = Console.Read();
+                            Course newCourse = businessLayer.GetCourseByID(id);
+                            Console.WriteLine("Enter Course new Name: ");
+                            string name = Console.ReadLine();
+                            newCourse.CourseName = name;
+                            businessLayer.UpdateCourse(newCourse);
+                        }
+                        else if (userInput == "4")
+                        {
+                            Console.WriteLine("Enter Course ID to Delete: ");
+                            int id = Console.Read();
+                            Course newCourse = businessLayer.GetCourseByID(id);
+                            businessLayer.RemoveCourse(newCourse);
+                        }
+                        else
+                        {
+                            IList<Course> courses = businessLayer.GetAllCourse();
+                            foreach (Course course in courses)
+                            {
+                                Console.WriteLine(string.Format("{0} - {1}", course.CourseId, course.CourseName));
+                            }
+                        }
                         break;
 
                     case "3":
@@ -67,91 +190,3 @@ namespace Assignment5
         }
     }
 }
-
-/*
-
-          Console.WriteLine("Enter StudentID to Remove: ");
-          int removeMe = Console.Read();
-
-          Student s = businessLayer.GetStudentByID(removeMe);
-          businessLayer.RemoveStudent(s);
-          Console.Write(s.StudentID);
-          Console.Write(s.StudentName);
-
-
-          IList<Student> students = businessLayer.GetAllStudents();
-          foreach (Student stud in students)
-              Console.WriteLine(string.Format("{0} - {1} - {2}", stud.StudentID, stud.StudentName, stud.StandardId));
-
-          IEnumerable<Standard> standards = businessLayer.GetAllStandards();
-          foreach (Standard stand in standards)
-              Console.WriteLine(string.Format("{0} - {1}", stand.StandardId, stand.StandardName));
-
-          //SearchStandardStudents();
-          Console.ReadLine();
-      }
-      //------------------- ReadCoice -------------------
-
-
-      //------------------- SearchStandardStudents ------ 
-      private static void SearchStandardStudents()
-      {
-          Console.Write("Enter Standard ID: ");
-
-          int choice = Console.Read();
-
-          Standard s = bl.GetStandardByID(choice);
-
-          if (s == null)
-          {
-              Console.WriteLine("Standard not found!");
-              return;
-          }
-          else if (s.Students == null || s.Students.Count == 0)
-          {
-              Console.WriteLine("This Standard has no Students!");
-              return;
-          }
-          Console.WriteLine("\nContaining Students: {0}", s.Students.Count);
-          foreach (Student student in s.Students)
-              Console.WriteLine("- " + student.StudentName);
-      }
-
-      private static void AddStandard()
-      {
-          int id;
-          string name, description;
-          IBusinessLayer businessLayer = new BusinessLayer.BusinessLayer();
-
-          Console.WriteLine("Enter Standard ID: ");
-          id = Console.Read();
-
-          Console.WriteLine("Enter Standard Name: ");
-          name = Console.ReadLine();
-
-          Console.WriteLine("Enter Standard Description: ");
-          description = Console.ReadLine();
-
-          Standard s = new Standard() { StandardId = id, StandardName = name, Description = description };
-
-          businessLayer.AddStandard(s);
-      }
-
-      private static void AddStudent()
-      {
-          IBusinessLayer businessLayer = new BusinessLayer.BusinessLayer();
-
-          Console.WriteLine("Enter Student ID: ");
-          int id = Console.Read();
-
-          Console.WriteLine("Enter Student Name: ");
-          string name = Console.ReadLine();
-
-          Console.WriteLine("Enter Standard ID: ");
-          int standardID = Console.Read();
-
-          Student s = new Student() { StudentID = id, StudentName = name, StandardId = standardID };
-
-          businessLayer.AddStudent(s);
-      }
-      */
