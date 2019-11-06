@@ -86,32 +86,32 @@ namespace BusinessLayer
         #endregion
 
         #region Course
-        IList<Course> GetAllCourse()
+        public IList<Course> GetAllCourse()
         {
             return _courseRepository.GetList();
         }
 
-        Course GetCourseByID(int id)
+        public Course GetCourseByID(int id)
         {
             return _courseRepository.GetById(id);
         }
 
-        Course GetCourseByName(string name)
+        public Course GetCourseByName(string name)
         {
             return _courseRepository.GetByName(name);
         }
 
-        void AddCourse(Course course)
+        public void AddCourse(Course course)
         {
             _courseRepository.Insert(course);
         }
 
-        void UpdateCourse(Course course)
+        public void UpdateCourse(Course course)
         {
             _courseRepository.Update(course);
         }
 
-        void RemoveCourse(Course course)
+        public void RemoveCourse(Course course)
         {
             _courseRepository.Delete(course);
         }
@@ -119,32 +119,32 @@ namespace BusinessLayer
         #endregion
 
         #region Teacher
-        IList<Teacher> GetAllTeacher()
+        public IList<Teacher> GetAllTeacher()
         {
             return _teacherRepository.GetList();
         }
 
-        Teacher GetTeacherByID(int id)
+        public Teacher GetTeacherByID(int id)
         {
             return _teacherRepository.GetById(id);
         }
 
-        Teacher GetTeacherByName(string name)
+        public Teacher GetTeacherByName(string name)
         {
             return _teacherRepository.GetByName(name);
         }
 
-        void AddTeacher(Teacher teacher)
+        public void AddTeacher(Teacher teacher)
         {
             _teacherRepository.Insert(teacher);
         }
 
-        void UpdateTeacher(Teacher teacher)
+        public void UpdateTeacher(Teacher teacher)
         {
             _teacherRepository.Update(teacher);
         }
 
-        void RemoveTeacher(Teacher teacher)
+        public void RemoveTeacher(Teacher teacher)
         {
             _teacherRepository.Delete(teacher);
         }
