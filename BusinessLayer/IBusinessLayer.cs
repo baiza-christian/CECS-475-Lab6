@@ -35,32 +35,32 @@ namespace BusinessLayer
         #endregion
 
         #region Course
-        IList<Student> GetAllStudents();
+        IList<Course> GetAllCourse();
 
-        Student GetStudentByID(int id);
+        Course GetCourseByID(int id);
 
-        Student GetStudentByName(string name);
+        Course GetCourseByName(string name);
 
-        void AddStudent(Student student);
+        void AddCourse(Course course);
 
-        void UpdateStudent(Student student);
+        void UpdateCourse(Course course);
 
-        void RemoveStudent(Student student);
+        void RemoveCourse(Course course);
 
         #endregion
 
         #region Teacher
-        IList<Student> GetAllStudents();
+        IList<Teacher> GetAllTeacher();
 
-        Student GetStudentByID(int id);
+        Teacher GetTeacherByID(int id);
 
-        Student GetStudentByName(string name);
+        Teacher GetTeacherByName(string name);
 
-        void AddStudent(Student student);
+        void AddTeacher(Teacher teacher);
 
-        void UpdateStudent(Student student);
+        void UpdateTeacher(Teacher teacher);
 
-        void RemoveStudent(Student student);
+        void RemoveTeacher(Teacher teacher);
 
         #endregion
     }

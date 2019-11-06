@@ -8,13 +8,16 @@ namespace BusinessLayer
     public class BusinessLayer : IBusinessLayer
     {
         private readonly IStandardRepository _standardRepository;
-        //Coult be IStudnetRepository??
         private readonly IStudentRepository _studentRepository;
+        private readonly ICourseRepository _courseRepository;
+        private readonly ITeacherRepository _teacherRepository;
 
         public BusinessLayer()
         {
             _standardRepository = new StandardRepository();
             _studentRepository = new StudentRepository();
+            _courseRepository = new CourseRepository();
+            _teacherRepository = new TeacherRepository();
         }
 
         #region Standard
@@ -79,7 +82,73 @@ namespace BusinessLayer
         {
             _studentRepository.Delete(student);
         }
-        
+
+        #endregion
+
+        #region Course
+        IList<Course> GetAllCourse()
+        {
+            return _courseRepository.GetList();
+        }
+
+        Course GetCourseByID(int id)
+        {
+            return _courseRepository.GetById(id);
+        }
+
+        Course GetCourseByName(string name)
+        {
+            return _courseRepository.GetByName(name);
+        }
+
+        void AddCourse(Course course)
+        {
+            _courseRepository.Insert(course);
+        }
+
+        void UpdateCourse(Course course)
+        {
+            _courseRepository.Update(course);
+        }
+
+        void RemoveCourse(Course course)
+        {
+            _courseRepository.Delete(course);
+        }
+
+        #endregion
+
+        #region Teacher
+        IList<Teacher> GetAllTeacher()
+        {
+            return _teacherRepository.GetList();
+        }
+
+        Teacher GetTeacherByID(int id)
+        {
+            return _teacherRepository.GetById(id);
+        }
+
+        Teacher GetTeacherByName(string name)
+        {
+            return _teacherRepository.GetByName(name);
+        }
+
+        void AddTeacher(Teacher teacher)
+        {
+            _teacherRepository.Insert(teacher);
+        }
+
+        void UpdateTeacher(Teacher teacher)
+        {
+            _teacherRepository.Update(teacher);
+        }
+
+        void RemoveTeacher(Teacher teacher)
+        {
+            _teacherRepository.Delete(teacher);
+        }
+
         #endregion
     }
 }
